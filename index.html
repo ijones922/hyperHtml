@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>HYPER CLOCK</title>
+    <script src="https://unpkg.com/hyperhtml@latest/min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css ">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div id="ticker" class="four columns"></div>
+        <div id="message" class="eight columns"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+  var timerText = 'timer';
+  function tick(render) {
+    render`
+      <div>
+        <h1>HYPER CLOCK</h1>
+        <h5>It is ${new Date().toLocaleTimeString()}.</h5>
+      </div>
+    `;
+  }
+  function helloMessage(text) {
+    hyperHTML(document.getElementById('message'))`<p>Super tiny ${text} created by template literals</p>`
+  }
+  helloMessage(timerText);
+  setInterval(tick, 1000,
+    hyperHTML.bind(document.getElementById('ticker'))
+  );
+  </script>
+</html>
